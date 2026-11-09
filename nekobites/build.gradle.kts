@@ -2,20 +2,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
-    id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.37.0"
 }
 
 android {
     namespace = "com.sosauce.nekobites"
     compileSdk {
         version = release(37)
-    }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
     }
 
     defaultConfig {
@@ -36,20 +29,40 @@ dependencies {
     implementation(libs.androidx.compose.animation.graphics.android)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.colorpicker.compose)
-
 }
 
+mavenPublishing {
+    publishToMavenCentral(automaticRelease = true)
+    signAllPublications()
+}
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.github.sosauce"
-            artifactId = "nekobites"
-            version = "1.0.0"
+mavenPublishing {
+    coordinates(group.toString(), "nekobites", version.toString())
 
-            afterEvaluate {
-                from(components["release"])
+    pom {
+        name.set("Nekobites")
+        description.set("My UI library for all my apps")
+        inceptionYear.set("2026")
+        url.set("https://github.com/sosauce/nekobites/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
+        developers {
+            developer {
+                id.set("sosauce")
+                name.set("sosauce")
+                url.set("https://github.com/sosauce/")
+            }
+        }
+        scm {
+            url.set("https://github.com/sosauce/nekobites/")
+            connection.set("scm:git:git://github.com/sosauce/nekobites.git")
+            developerConnection.set("scm:git:ssh://git@github.com/sosauce/nekobites .git")
         }
     }
 }
+
