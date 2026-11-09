@@ -30,14 +30,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.colorpicker.compose)
 }
-
+// ./gradlew :nekobites:publishAndReleaseToMavenCentral
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
-}
 
-mavenPublishing {
-    coordinates(group.toString(), "nekobites", version.toString())
+    coordinates("io.github.sosauce", "nekobites", "1.0.0")
 
     pom {
         name.set("Nekobites")
@@ -47,8 +45,8 @@ mavenPublishing {
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
             }
         }
         developers {
@@ -61,7 +59,7 @@ mavenPublishing {
         scm {
             url.set("https://github.com/sosauce/nekobites/")
             connection.set("scm:git:git://github.com/sosauce/nekobites.git")
-            developerConnection.set("scm:git:ssh://git@github.com/sosauce/nekobites .git")
+            developerConnection.set("scm:git:ssh://git@github.com/sosauce/nekobites.git")
         }
     }
 }
