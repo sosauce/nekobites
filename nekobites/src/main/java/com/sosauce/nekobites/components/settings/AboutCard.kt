@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -57,7 +58,7 @@ fun AboutCard(
                         .size(100.dp)
                         .padding(15.dp)
                         .background(
-                            shape = RoundedCornerShape(24.dp),
+                            shape = RoundedCornerShape(12.dp),
                             color = Color(0xFFf4a7bd)
                         ),
                     contentAlignment = Alignment.Center
@@ -70,7 +71,9 @@ fun AboutCard(
                     )
                 }
                 Spacer(5.dp)
-                Column {
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
                     Text(
                         text = appName,
                         style = MaterialTheme.typography.headlineMediumEmphasized
@@ -88,7 +91,6 @@ fun AboutCard(
                         )
                     }
                 }
-                Spacer(Modifier.weight(1f))
                 FilledIconButton(
                     onClick = { uriHandler.openUri(updateLink) },
                     shapes = IconButtonDefaults.shapes()
