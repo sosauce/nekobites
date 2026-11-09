@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-private fun ScrollPage(
+fun ScrollPage(
     contentPadding: PaddingValues,
     content: @Composable ColumnScope.() -> Unit
 ) {
