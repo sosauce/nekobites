@@ -35,7 +35,7 @@ mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
 
-    coordinates("io.github.sosauce", "nekobites", "1.1.1")
+    coordinates("io.github.sosauce", "nekobites", "1.1.2")
 
     pom {
         name.set("Nekobites")
